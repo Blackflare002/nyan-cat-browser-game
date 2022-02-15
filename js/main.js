@@ -23,12 +23,14 @@ const keydownHandler = (event) => {
 // We add an event listener to document. document the ancestor of all DOM nodes in the DOM.
 document.addEventListener("keydown", keydownHandler);
 
-const timerDisplay = document.createElement("h3");
+const timerDisplay = document.createElement("h2");
 timerDisplay.setAttribute("id", "timerDisplay");
-const rootEl = document.getElementById("app");
-rootEl.appendChild(timerDisplay);
 timerDisplay.style.position = "relative";
 timerDisplay.style.zIndex = "150";
+timerDisplay.style.left = "400";
+timerDisplay.style.bottom = "450";
+const rootEl = document.getElementById("app");
+rootEl.appendChild(timerDisplay);
 
 const survivalTimer = () => {
   let sec = 120;
@@ -36,8 +38,8 @@ const survivalTimer = () => {
     timerDisplay.innerText = sec;
     sec--;
     if (sec < 0) {
-      clearInterval(timer);
       gameEngine.gameOver = true;
+      clearInterval(timer);
     }
   }, 1000);
 };

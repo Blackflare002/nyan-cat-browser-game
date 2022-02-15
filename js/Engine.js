@@ -60,11 +60,13 @@ class Engine {
     // and return from the method (Why is the return statement important?)
     if (this.isPlayerDead()) {
       window.alert("Game over");
+      // clearInterval(timer);
       return;
     }
 
     if (this.gameOver) {
       window.alert("YOU WIN!");
+      // clearInterval(timer);
       return;
     }
 
