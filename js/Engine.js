@@ -16,6 +16,8 @@ class Engine {
     this.enemies = [];
     // We add the background image to the game
     addBackground(this.root);
+
+    this.gameOver = false;
   }
 
   // The gameLoop will run every few milliseconds. It does several things
@@ -61,10 +63,23 @@ class Engine {
       return;
     }
 
+    if (this.gameOver) {
+      window.alert("YOU WIN!");
+      return;
+    }
+
     // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
     setTimeout(this.gameLoop, 20);
-  
+
+    //survival timer
+    // const timerFunc = () => {
+    //   window.alert("You Win!");
+    //   clearInterval(survivalTimer);
+    //   return;
+    // };
+    // let survivalTimer = setInterval(timerFunc, 60000);
   };
+
   // This method is not implemented correctly, which is why
   // the burger never dies. In your exercises you will fix this method.
   isPlayerDead = () => {
@@ -85,4 +100,7 @@ class Engine {
     }
   };
 }
+
 // const y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
+//survival timer is a major change
+//audio is a minor change - soundtrack? SFX?
