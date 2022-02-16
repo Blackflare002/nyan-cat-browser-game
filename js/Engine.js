@@ -72,14 +72,6 @@ class Engine {
 
     // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
     setTimeout(this.gameLoop, 20);
-
-    //survival timer
-    // const timerFunc = () => {
-    //   window.alert("You Win!");
-    //   clearInterval(survivalTimer);
-    //   return;
-    // };
-    // let survivalTimer = setInterval(timerFunc, 60000);
   };
 
   // This method is not implemented correctly, which is why

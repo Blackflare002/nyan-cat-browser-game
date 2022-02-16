@@ -23,14 +23,25 @@ const keydownHandler = (event) => {
 // We add an event listener to document. document the ancestor of all DOM nodes in the DOM.
 document.addEventListener("keydown", keydownHandler);
 
+const rootEl = document.getElementById("app");
 const timerDisplay = document.createElement("h2");
+const soundtrack = document.getElementById("soundtrack-container");
+// const audioSource = document.createElement("source");
+
 timerDisplay.setAttribute("id", "timerDisplay");
+timerDisplay.style.display = "inline-block";
 timerDisplay.style.position = "relative";
 timerDisplay.style.zIndex = "150";
-timerDisplay.style.left = "400";
+timerDisplay.style.left = "80";
 timerDisplay.style.bottom = "450";
-const rootEl = document.getElementById("app");
 rootEl.appendChild(timerDisplay);
+
+soundtrack.style.position = "relative";
+soundtrack.style.zIndex = "151";
+// soundtrack.style.top = "155";
+soundtrack.style.display = "inline-block";
+
+// soundtrack.setAttribute("controls");
 
 const survivalTimer = () => {
   let sec = 120;
