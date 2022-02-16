@@ -25,22 +25,35 @@ document.addEventListener("keydown", keydownHandler);
 
 const rootEl = document.getElementById("app");
 const button = document.createElement("button");
+const objective = document.createElement("h1");
 const timerDisplay = document.createElement("h2");
 const soundtrackContainer = document.getElementById("soundtrack-container");
-// const soundtrackController = document.getElementById("soundtrack-controller");
-// const soundtrackAudio = document.getElementById("soundtrack-audio");
-// const audioSource = document.createElement("source");
+
+objective.setAttribute("id", "objective");
+objective.style.display = "inline-block";
+objective.style.position = "relative";
+objective.style.zIndex = "159";
+objective.style.left = "80";
+objective.style.bottom = "450";
+objective.textContent = "OBJECTIVE: SURVIVE";
+rootEl.appendChild(objective);
 
 timerDisplay.setAttribute("id", "timerDisplay");
 timerDisplay.style.display = "inline-block";
 timerDisplay.style.position = "relative";
 timerDisplay.style.zIndex = "150";
-timerDisplay.style.left = "80";
-timerDisplay.style.bottom = "450";
+timerDisplay.style.right = 265;
+timerDisplay.style.bottom = "400";
 rootEl.appendChild(timerDisplay);
 
-button.innerText = "BEGIN";
+button.textContent = "BEGIN";
+button.style.position = "relative";
+button.style.zIndex = "155";
+button.style.bottom = "15";
+button.style.right = 325;
+button.style.marginLeft = 25;
 rootEl.appendChild(button);
+
 soundtrackContainer.style.position = "relative";
 soundtrackContainer.style.zIndex = "151";
 soundtrackContainer.style.top = "0";
@@ -52,9 +65,7 @@ const startGame = () => {
   audio.autoplay = true;
   audio.src = "sounds/nyan-cat-song.mp3";
   audio.controls = true;
-  // let script = document.querySelector("script");
-  // console.log(script);
-  // document.body.insertBefore(audio, script);
+  audio.volume = 0.5;
   soundtrackContainer.appendChild(audio);
   audio.style.zIndex = "151";
   survivalTimer();
@@ -63,33 +74,21 @@ const startGame = () => {
   button.removeEventListener("click", startGame);
 };
 button.addEventListener("click", startGame);
-// let audio = document.createElement("audio");
-// audio.setAttribute("id", "audio");
-// audio.autoplay = true;
-// audio.src = "sounds/nyan-cat-song.mp3";
-// audio.controls = true;
-// rootEl.appendChild(audio);
-// const playAudio = () => {
-//   soundtrackController.play();
-// };
-
-// soundtrackController.addEventListener("load", playAudio);
-
-// soundtrack.setAttribute("controls");
 
 const survivalTimer = () => {
-  let sec = 216;
+  let sec = 216; //216
   let timer = setInterval(() => {
     timerDisplay.innerText = sec;
     sec--;
+    if (sec < 60) {
+      MAX_ENEMIES = 4;
+    }
     if (sec < 0) {
       gameEngine.gameOver = true;
       clearInterval(timer);
     }
   }, 1000);
 };
-
-// survivalTimer();
 
 // We call the gameLoop method to start the game
 // gameEngine.gameLoop();
